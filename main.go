@@ -17,9 +17,6 @@ func (t *TestSum) Add() error {
 }
 
 func main() {
-	var s Sum
-	s = &TestSum{}
-	_ = s.Add()
-	leetcode1.TwoSum()
-	fmt.Println("hello world")
+	result := leetcode1.TwoSum([]int{3, 2, 4}, 6)
+	fmt.Println(result)
 }
