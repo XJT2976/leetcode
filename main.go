@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"main/leetcode1"
-)
+import "fmt"
 
 type Sum interface {
 	Add() error
@@ -17,6 +14,9 @@ func (t *TestSum) Add() error {
 }
 
 func main() {
-	result := leetcode1.TwoSum([]int{3, 2, 4}, 6)
-	fmt.Println(result)
+	for i := 0; i < 5; i++ {
+		defer func() {
+			fmt.Printf("%d ", i)
+		}()
+	}
 }
