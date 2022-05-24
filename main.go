@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"main/leetcode69"
+)
 
 type Sum interface {
 	Add() error
@@ -14,9 +17,5 @@ func (t *TestSum) Add() error {
 }
 
 func main() {
-	for i := 0; i < 5; i++ {
-		defer func() {
-			fmt.Printf("%d ", i)
-		}()
-	}
+	fmt.Println(leetcode69.MySqrt(2))
 }
