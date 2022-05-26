@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"main/leetcode69"
+	"main/leetcode18"
 )
 
 type Sum interface {
@@ -17,5 +17,5 @@ func (t *TestSum) Add() error {
 }
 
 func main() {
-	fmt.Println(leetcode69.MySqrt(2))
+	fmt.Println(leetcode18.FourSum([]int{-3, -2, -1, 0, 0, 1, 2, 3}, 0))
 }
