@@ -3,6 +3,7 @@ package main
 import (
 	"container/heap"
 	"fmt"
+	"strconv"
 )
 
 type Sum interface {
@@ -17,35 +18,43 @@ func (t *TestSum) Add() error {
 }
 
 func main() {
-	fmt.Println(mergeKLists([]*ListNode{
+	fmt.Println(mergeSort(
 		&ListNode{
-			1,
+			4,
 			&ListNode{
-				4,
+				2,
 				&ListNode{
-					5,
-					nil,
+					1,
+					&ListNode{
+						3,
+						nil,
+					},
 				},
 			},
-		},
-		&ListNode{
-			1,
-			&ListNode{
-				3,
-				&ListNode{
-					4,
-					nil,
-				},
-			},
-		},
-		&ListNode{
-			2,
-			&ListNode{
-				6,
-				nil,
-			},
-		},
-	}))
+		}))
+	getHint("11", "10")
+}
+func getHint(secret string, guess string) string {
+	m := make(map[byte]int)
+	A := 0
+	B := 0
+
+	for i := range secret {
+		if secret[i] == guess[i] {
+			A++
+		} else {
+			m[secret[i]] += 1
+		}
+	}
+
+	for i := range guess {
+		if m[guess[i]] > 0 {
+			B++
+			m[guess[i]] -= 1
+		}
+	}
+
+	return strconv.Itoa(A) + "A" + strconv.Itoa(B) + "B"
 }
 
 type ListNode struct {
@@ -100,6 +109,58 @@ func mergeKLists(lists []*ListNode) *ListNode {
 
 		prev = n
 	}
-
 	return head
+}
+
+func sortList(head *ListNode) *ListNode {
+	return mergeSort(head)
+}
+
+func mergeSort(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	slow := head
+	fast := head
+	prev := head
+
+	for fast != nil && fast.Next != nil {
+		prev = slow
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+
+	prev.Next = nil
+
+	l1 := mergeSort(head)
+	l2 := mergeSort(slow)
+
+	return merge(l1, l2)
+}
+
+func merge(l1, l2 *ListNode) *ListNode {
+	dummy := &ListNode{}
+	cur := dummy
+	for l1 != nil && l2 != nil {
+		if l1.Val < l2.Val {
+			cur.Next = l1
+			l1 = l1.Next
+		} else {
+			cur.Next = l2
+			l2 = l2.Next
+		}
+
+		cur = cur.Next
+	}
+
+	if l1 != nil {
+		cur.Next = l1
+	}
+
+	if l2 != nil {
+		cur.Next = l2
+	}
+
+	return dummy.Next
 }
