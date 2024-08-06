@@ -1,4 +1,4 @@
-package letcode541
+package leetcode541
 
 func ReverseStr(s string, k int) string {
 	length := len(s)
