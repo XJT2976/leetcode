@@ -5,7 +5,7 @@ import (
 )
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
@@ -15,7 +15,7 @@ func (l *List) Len() int {
 	return len(*l)
 }
 
-func (l *List) Less(i, j int) bool{
+func (l *List) Less(i, j int) bool {
 	if (*l)[i] == nil {
 		return true
 	} else if (*l)[j] == nil {
@@ -35,22 +35,22 @@ func (l *List) Push(x any) {
 	}
 }
 
-func (l *List) Pop() any{
+func (l *List) Pop() any {
 	if len(*l) <= 0 {
 		return nil
 	}
-	
-	ret := (*l)[len(*l) - 1]
-	*l = (*l)[:len(*l) - 1]
+
+	ret := (*l)[len(*l)-1]
+	*l = (*l)[:len(*l)-1]
 	return ret
 }
 
 func MergeKLists(lists []*ListNode) *ListNode {
 	var head, tail *ListNode
-    l := List(lists)
+	l := List(lists)
 	heap.Init(&l)
 
-	for ;len(l) > 0;{
+	for len(l) > 0 {
 		x := heap.Pop(&l)
 		if x == nil {
 			break

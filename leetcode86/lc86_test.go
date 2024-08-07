@@ -41,15 +41,15 @@ func TestPartition(t *testing.T) {
 		{150, &ListNode{200, nil}},
 	}
 	expects := [][]int{
-		{1,2,2,4,3,5},
-		{1,2},
+		{1, 2, 2, 4, 3, 5},
+		{1, 2},
 		{},
 		{10},
 		{100},
 		{20, 10},
 		{150, 200},
 	}
-	xl := []int{3,2,5, 50, 50, 50, 50}
+	xl := []int{3, 2, 5, 50, 50, 50, 50}
 	for i := range l {
 		head := Partition(l[i], xl[i])
 		for j := range expects[i] {

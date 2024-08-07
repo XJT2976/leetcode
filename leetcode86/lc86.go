@@ -1,15 +1,14 @@
 package leetcode86
 
-
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
 func Partition(head *ListNode, x int) *ListNode {
 	var now, lessHead, lessTail, greatHead, greatTail *ListNode
 	now = head
-	for ;now != nil; {
+	for now != nil {
 		if now.Val < x {
 			if lessHead == nil {
 				lessHead = now
@@ -18,7 +17,7 @@ func Partition(head *ListNode, x int) *ListNode {
 				lessTail.Next = now
 				lessTail = now
 			}
-		} else{
+		} else {
 			if greatHead == nil {
 				greatHead = now
 				greatTail = now

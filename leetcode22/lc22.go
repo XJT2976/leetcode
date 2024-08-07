@@ -22,7 +22,7 @@ func dfs(arr []byte, m map[byte]int, pos int, ret *[]string) {
 		m['('] += 1
 		pos -= 1
 	}
-	
+
 	if m[')'] > 0 && m[')'] > m['('] {
 		arr[pos] = ')'
 		m[')'] -= 1
@@ -30,5 +30,5 @@ func dfs(arr []byte, m map[byte]int, pos int, ret *[]string) {
 		dfs(arr, m, pos, ret)
 		m[')'] += 1
 		pos -= 1
-	} 
+	}
 }

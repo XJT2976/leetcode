@@ -77,9 +77,9 @@ func TestMergeKLists(t *testing.T) {
 	}
 
 	expects := [][]int{
-		{1,1,2,3,4,4,5,6},
-		{1,4,5},
-		{1,2,3,4,10,100},
+		{1, 1, 2, 3, 4, 4, 5, 6},
+		{1, 4, 5},
+		{1, 2, 3, 4, 10, 100},
 	}
 	for i := range ll {
 		head := MergeKLists(ll[i])
