@@ -12,9 +12,7 @@ func SubsetsWithDup(nums []int) [][]int {
 
 func backtracking(start int, nums []int, path *[]int, result *[][]int) {
 	tmp := make([]int, len(*path))
-	for i := range *path {
-		tmp[i] = (*path)[i]
-	}
+	copy(tmp, *path)
 	*result = append(*result, tmp)
 
 	for i := start; i < len(nums); i++ {
